@@ -11,7 +11,7 @@ function App() {
         setFlags(res);
       }
       catch(e){
-        console.log(`Error fetching data:${e}`);
+        console.error(`Error fetching data:${e}`);
       }
     }
     getFlags();

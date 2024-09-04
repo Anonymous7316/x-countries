@@ -18,10 +18,10 @@ function App() {
   },[]);
 
   return (
-    <div className="App">
+    <div style={{display:'flex', justifyContent:'center', alignItems:'center',flexWrap:'wrap',textAlign:'center'}}>
       {flags.current.map((flag)=>{
         return(
-          <div key={flag.abbr} className='card'>
+          <div className="card" key={flag.abbr}>
               <img style={{height:'150px', width:'150px'}} src={flag.flag} alt={flag.abbr}/>
               <p>{flag.name}</p>
           </div>

@@ -1,14 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const flags = useRef([]);
+  const [flags,setFlags] = useState([]);
   useEffect(()=>{
     const getFlags = async() =>{
       try{
-        flags.current = await fetch('https://xcountries-backend.azurewebsites.net/all');
-        flags.current = await flags.current.json();
-        console.log(flags.current);
+        let res = await fetch('https://xcountries-backend.azurewebsites.net/all');
+        res = await res.json();
+        setFlags(res);
       }
       catch(e){
         console.log(e);
@@ -19,9 +19,9 @@ function App() {
 
   return (
     <div style={{display:'flex', justifyContent:'center', alignItems:'center',flexWrap:'wrap',textAlign:'center'}}>
-      {flags.current.map((flag)=>{
+      {flags.map((flag,index)=>{
         return(
-          <div className="card" key={flag.abbr}>
+          <div className="card" key={index}>
               <img style={{height:'150px', width:'150px'}} src={flag.flag} alt={flag.abbr}/>
               <p>{flag.name}</p>
           </div>
